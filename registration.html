@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrering</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles-Inlämningsuppgift-2.css">
+    <script src="scripts/registration-scripts.js"></script>
+
+
+</head>
+<body onload="createAndSavePredefinedRestaurants();">
+
+<nav class="navBar">
+    <ul>
+        <li><a href="admin.html">Admin</a></li>
+        <li><a href="add-new-restaurant.html">Lägg till restaurang</a></li>
+        <li><a href="registration.html">Anmälan</a></li>
+        <span class="navBarHeader">Boka bord på din favoritrestaurang</span>
+    </ul>
+</nav>
+<div class="selectListContainer">
+<h1>Ny bokning</h1>
+
+<h3>Steg 1 - Välj restaurang</h3>
+    <h5>Här kan du boka bord på din favoritrestauranger som har Michelinstjärnor.</h5>
+    <div class="form-group">
+        <div id="selectList"></div>
+    </div>
+</div>
+</body>
+</html>
+
+
+<!-- Skapa en applikation för anmälningar till olika aktiviteter.
+
+G:
+Applikationen skall innehålla minst två aktiviteter och dessa bör sparas i en lista.
+Från startsidan skall användaren välja vilken aktivitet som anmälan skall gälla.
+
+När en aktivitet har valts skall användaren komma till nästa steg i anmälningen där ett formulär som innefattar följande information skall finnas med:
+Förnamn
+Efternamn
+Telefonnummer
+E-postadress
+Ett val av flera olika möjligheter (Tänk radiobutton eller checkboxes)
+Kommentarer (Fritext)
+
+Efter att användaren har knappat in sina uppgifter skall deltagaren lagras i en lista.
+Flera användare skall kunna anmäla sig och de nya skall läggas till i listan.
+
+Skapa en adminsida som visar vilka personer som har anmält sig till vilka aktiviteter
+
+Frågeställningar:
+Hur kan jag spara information kring anmälda deltagare?
+Hur kan aktiviteter sparas utan att hårdkoda in dem i javaskriptet?
+
+VG:
+Implementera validering för anmälningsformuläret (Samtliga fält skall vara obligatoriska, e-postadressen behöver valideras som en giltig e-postadress, telefonnumret bör valideras och minst ett av valen skall vara valt)
+För aktiviteterna, implementera google maps och placera ut en kartnål på kartan där aktivteten skall äga rum.
+Skapa en sida för att mata in nya aktiviteter
+Välkommenterad kod
+ -->

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lägg till ny restaurang</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles-Inlämningsuppgift-2.css">
+    <script src="scripts/add-new-restaurants-scripts.js"></script>
+</head>
+<body> <!-- onload = createAndSavePredefinedRestaurants -->
+<nav class="navBar">
+    <ul>
+        <li><a href="admin.html">Admin</a></li>
+        <li><a href="add-new-restaurant.html">Lägg till restaurang</a></li>
+        <li><a href="registration.html">Anmälan</a></li>
+        <span class="navBarHeader">Boka bord på din favoritrestaurang</span>
+    </ul>
+</nav>
+
+
+<form id="formToSaveActivities" onsubmit="event.preventDefault();saveNewRestaurantAndRedirect();">
+    <h3>Lägg till ny restaurang</h3>
+    <hr>
+    <fieldset>
+        <legend>Info</legend>
+        <form class="form-horizontal">
+            <span class="headerStyle"> Namn på restaurang </span>
+            <div class="form-group">
+                <input type="text" id="inputNamePlace" class="form-control setWidth"
+                       placeholder= "Grill" required/>
+            </div>
+
+            <div class="form-group">
+                <span class="headerStyle">Antal stjärnor</span>
+                <select class="form-control setWidth" id="numberOfStars" required>
+                    <option selected disabled value=""> Antal stjärnor</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <span class="headerStyle"> Webbadress - (www.grill.se)</span>
+                <input  type="text" name="" id="inputWebpage"  pattern ="[www]{3}\.[a-zA-Z0-9]*\.[a-zA-Z]{2,4}$" class="form-control setWidth" placeholder="www.maeemo.no" required/>
+            </div>
+            <div class="form-group">
+                <span class="headerStyle ">Länk till bild - måste sluta på .jpg, .gif, .jpeg eller .png</span>                                        <!-- ([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$  ...  /\.(jpeg|jpg|gif|png)$/ -->
+
+
+                <input class="form-control setWidth" pattern="((https?:\/\/)?.*\.(?:png|jpg|jpeg|gif))" type="text" id="inputLinkToImage" required placeholder="www.exempel.se/bilder/exempel.jpg">
+                <!-- pattern="([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$" -->
+            </div>
+        </form>
+
+        <fieldset>
+            <legend>Menypaket</legend>
+
+            <span class="headerStyle">Deluxe</span>
+            <div class="form-inline">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">#</div>
+                        <input type="number" id="inputNumberOfCourcesDeluxe" class="form-control setWidth"
+                               placeholder="Antal rätter">
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-addon">SEK</div>
+                        <input type="number" id="inputFoodPriceDeluxe" class="form-control" placeholder="Pris">
+                    </div>
+                </div>
+            </div>
+
+            <span class="headerStyle">Standard</span>
+
+            <div class="form-inline">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">#</div>
+                        <input type="number" id="inputNumberOfCourcesStandard" class="form-control"
+                               placeholder="Antal rätter">
+
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-addon">SEK</div>
+                        <input type="number" id="inputFoodPriceStandard" class="form-control" placeholder="Pris" required>
+                    </div>
+
+                </div>
+            </div>
+
+            <span class="headerStyle">Mini</span>:
+            <div class="form-inline">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">#</div>
+                        <input type="number" id="inputNumberOfCourcesMini" class="form-control"
+                               placeholder="Antal rätter" required>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-addon">SEK</div>
+                        <input type="number" id="inputFoodPriceMini" class="form-control" placeholder="Pris" required>
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Dryckespaket</legend>
+
+            <form class="form-horizontal">
+
+                <span class="headerStyle">Vin</span>:
+                <div class="form-group">
+                    <div class="input-group ">
+                        <div class="input-group-addon">SEK</div>
+                        <input type="number" id="inputWinePairingPrice" class="form-control setWidth "
+                               placeholder="pris">
+                    </div>
+                </div>
+
+                <span class="headerStyle">Juice</span>:
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">SEK</div>
+                        <input type="number" id="inputJuicePairingPrice" class="form-control" placeholder="pris">
+                    </div>
+                </div>
+
+                <span class="headerStyle">Alkoholfritt</span>;
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">SEK</div>
+                        <input type="number" id="inputNonAlcPairingPrice" class="form-control" placeholder="pris">
+                    </div>
+                </div>
+
+                <span class="headerStyle">Vatten (kolsyrat och/eller stilla)</span>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">SEK</div>
+                        <input type="number" id="inputWaterPairingPrice" class="form-control" placeholder="pris">
+                    </div>
+                </div>
+
+            </form>
+        </fieldset>
+
+        <fieldset>
+            <legend>Adress</legend>
+
+            <div class="form-inline">
+                <div class="form-group">
+
+                    <div class="input-group">
+                        <input type="text" class="form-control controlLayoutAdress" id="inputStreetname"
+                               placeholder="Gatuadress" required>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="number" class="form-control controlLayoutAdress" id="inputPostalCode"
+                               placeholder="Postnummer" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-inline">
+                <div class="form-group">
+
+                    <div class="input-group">
+                        <input type="text" class="form-control controlLayoutAdress" id="inputCity" placeholder="Stad" required pattern="[a-öA-Ö]+">
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" class="form-control controlLayoutAdress" id="inputCountry" placeholder="Land" required pattern="[a-öA-Ö]+">
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+
+
+        <button type="submit"  class="btn btn-primary btnLayout">Registrera</button>
+        <button type="submit"  class="btn btn-danger btnLayout" onclick=resetForm('restaurant')>Avbryt</button>
+
+    </fieldset>
+</form>
+</div>
+
+<div id="myDiv"></div>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+body {
+    background-color: rgba(69, 176, 255, 0.05);
+}
+
+.navBar {
+    border: 1px solid black;
+    height: 61px;
+    background-color: #2e6da4;
+
+}
+
+.navBar ul li {
+    font-family: Cinzel;
+    text-align: center;
+    list-style: none;
+    float: right;
+    height: 60px;
+    line-height: 60px;
+}
+
+.navBar ul li:hover {
+    background-color: #112a40;
+}
+
+.navBar ul li a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.navBarHeader {
+    font-size: 18px;
+    color: white;
+    font-family: Cinzel;
+    line-height: 60px;
+
+}
+
+
+
+#googleMapsForSelectedActivity {
+    border: 1px solid black;
+    height: 400px;
+    width: 50%;
+    float: left;
+
+}
+
+#imageDivForRestaurant > img {
+    width: 50%;
+    border: 1px solid black;
+    height: 400px;
+    float: left;
+}
+
+.newBookingForm {
+    clear: left;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+.infoAboutSelectedActivity {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+textarea {
+    display: block;
+}
+textarea.form-control {
+    width: 50%;
+}
+
+.textAreaLayout{
+    margin-top: 10px;
+}
+
+.fa-star {
+    color: gold;
+    font-size: x-large;
+    letter-spacing: 7px;
+}
+
+.selectListContainer {
+    width: 75%;
+    margin-left: 50px;
+}
+
+#formToSaveActivities {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+
+}
+
+fieldset {
+    border: 1px solid #2e6da4;
+    padding: 10px;
+    position: relative;
+    border-radius: 4px;
+    background-color: rgba(69, 176, 255, 0.21);
+    margin: 20px 0 0;
+}
+
+legend {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0;
+    width: 35%;
+    border: 1px solid #2e6da4;
+    border-radius: 4px;
+    padding: 5px 5px 5px 10px;
+    background-color: #ffffff;
+}
+
+.headerStyle {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.input-group .form-control {
+    width: 156px;
+}
+
+.form-horizontal .form-group {
+    margin-left: 0;
+}
+
+.setWidth {
+    width: 60%;
+}
+
+.controlLayoutAdress {
+    margin-top: 10px;
+}
+
+.btnLayout {
+    float: right;
+    width: 150px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.nameAndStarsDiv{
+    margin-left: 20px;
+}
+
+.bold{
+    font-weight: 900;
+}
+ul li{
+    list-style: none;
+
+}
+hr {
+    border: 0;
+    height: 0;
+    box-shadow: 0 0 10px 1px #255c8b;
+}
+
+.headerRestaurantAdmin{
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-decoration: underline;
+
+}
+.selectlistLayout{
+    margin-left: 50px;
+}
+
+#showSelectedRestaurant{
+    margin-top: 40px;
+}
+
+.listStyleAdmin{
+    padding: 0;
+}
+
+.hide{
+    display: none;
+}

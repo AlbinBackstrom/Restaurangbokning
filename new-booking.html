@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ny registrering</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEAUtm3P7ZPgG_2bh-qHECCyFMVijLq-0&callback=initMap"
+            async defer></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles-Inlämningsuppgift-2.css">
+    <script src="scripts/new-bookings-scripts.js"></script>
+
+</head>
+<body onload="getRestaurantFromId();initMap(); document.newBookingForm.fName.focus();">
+
+<nav class="navBar">
+    <ul>
+        <li><a href="admin.html">Admin</a></li>
+        <li><a href="add-new-restaurant.html">Lägg till restaurang</a></li>
+        <li><a href="registration.html">Anmälan</a></li>
+        <span class="navBarHeader">Boka bord på din favoritrestaurang</span>
+
+    </ul>
+</nav>
+<div class="nameAndStarsDiv">
+    <h3>Steg 2 - Boka bord</h3>
+    <h2><span id="headerRestaurant"></span> |
+        <span id="infoStars"></span></h2>
+</div>
+
+
+<div class="newBookingForm">
+    <form class="form-horizontal" onsubmit="event.preventDefault(); saveNewBookingAndRedirect();" name="newBookingForm"
+          id="newBookingForm">
+        <fieldset>
+            <legend>Ny bokning</legend>
+
+            <div class="form-group">
+                <span class="headerStyle">Förnamn</span>
+                <input type="text" class="form-control setWidth" name="fName" id="fName" placeholder="Namn" required>
+            </div>
+
+            <div class="form-group">
+                <span class="headerStyle">Efternamn</span>
+                <input type="text" class="form-control setWidth" name="lName" id="lName" placeholder="Namnsson"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <span class="headerStyle">Telefon (xxx-xxxxxxx)</span>
+                <input type="tel" class="form-control setWidth" name="phnNumber" id="phnNumber"
+                       placeholder="072-1544404" pattern="^\d{3}-\d{7}$" required>
+            </div>
+            <div class="form-group">
+                <span class="headerStyle">Email</span>
+                <input type="email" class="form-control setWidth" name="email" id="email" placeholder="mail@mail.com"
+                       required>
+            </div>
+
+            <fieldset>
+                <legend>Menypaket</legend>
+                <div class="radioButtonLayout">
+                    <span class="headerStyle">Deluxe:</span>
+                    <span id="numOfCorDel"></span> rätter - <span id="priceDeluxee"></span>
+                    <input type="radio" name="foodMenuAnswer" value="Deluxe" id="deluxe" required>
+                </div>
+
+                <div class="radioButtonLayout">
+                    <span class="headerStyle">Standard:</span>
+                    <span id="numOfCorStan"></span> rätter - <span id="priceStan"></span>
+                    <input type="radio" name="foodMenuAnswer" value="Standard" id="standard" required>
+                </div>
+
+                <div class="radioButtonLayout">
+                    <span class="headerStyle">Mini:</span>
+                    <span id="numOfCorMini"></span> rätter - <span id="priceMini"></span>
+                    <input type="radio" name="foodMenuAnswer" value="Mini" id=mini required>
+                </div>
+            </fieldset>
+
+
+            <fieldset>
+                <legend>Dryckespaket</legend>
+                <div class="radioButtonLayout">
+                    <span class="headerStyle">Vinpaket:</span>
+                    <span id="priceOfWinePairing"></span>
+                    <input type="radio" value="Wine" name="drinkMenyAnswer" id="wine" required>
+                </div>
+                <div class="radioButtonLayout">
+                    <span class="headerStyle">Juicespaket: </span>
+                    <span id="priceOfJuicePairing"></span>
+                    <input type="radio" value="Juice" name="drinkMenyAnswer" id="juice" required>
+                </div>
+                <div class="radioButtonLayout">
+                    <span class="headerStyle">Alkholfrit: </span>
+                    <span id="priceOfNonAlcoholicPairing"></span>
+                    <input type="radio" value="Non-Alcoholic" name="drinkMenyAnswer" id="nonAlc" required>
+                </div>
+                <div class="radioButtonLayout">
+                    <span class="headerStyle">Vatten - kolsyrat eller stilla:</span>
+                    <span id="priceOfWaterPairing"></span>
+                    <input type="radio" value="Water" name="drinkMenyAnswer" id="water" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Datum och övriga kommentarer</legend>
+                <span class="headerStyle">Datum</span>
+                <input type="date" id="inputDateForBookin" required>
+                <div class="textAreaLayout">
+                    <label class="headerStyle" for="textBox">Övriga kommentarer</label>
+                    <textarea name="textBox" class="form-control" id="textBox" cols="30"
+                              placeholder="Bland annat önskemål om tid eller bordsplacering" rows="5"></textarea><br>
+                </div>
+
+                    <input type="submit" class="btn btn-primary btnLayout" value="Registrera">
+                    <input type="button" class="btn btn-danger btnLayout" value="Avbryt"
+                           onclick="resetForm('booking');">
+            </fieldset>
+        </fieldset>
+    </form>
+</div>
+
+
+
+
+
+<div class="infoAboutSelectedActivity">
+    <fieldset>
+
+        <legend>Information</legend>
+        <div class="textInfo">
+            <span class="headerStyle">Webbadress:</span> <span id="infoWebsite"></span>
+        </div>
+
+        <div class="textInfo">
+            <span class="headerStyle">Adress:</span> <span id="infoAdress"></span>
+        </div>
+
+        <div class="mapAndImageforRestaurant">
+
+            <div id="googleMapsForSelectedActivity">
+            </div>
+
+            <div id="imageDivForRestaurant">
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+</body>
+</html>
